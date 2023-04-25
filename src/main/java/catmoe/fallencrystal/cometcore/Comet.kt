@@ -1,16 +1,20 @@
-package catmoe.fallencrystal.cometcore;
+package catmoe.fallencrystal.cometcore
 
-import net.md_5.bungee.api.plugin.Plugin;
+import catmoe.fallencrystal.cometcore.config.Config
+import catmoe.fallencrystal.cometcore.config.ConfigManager
+import net.md_5.bungee.api.plugin.Plugin
 
-public final class Comet extends Plugin {
-
-    @Override
-    public void onEnable() {
+class Comet : Plugin() {
+    override fun onEnable() {
         // Plugin startup logic
     }
 
-    @Override
-    public void onDisable() {
+    override fun onDisable() {
         // Plugin shutdown logic
+    }
+
+    fun loadConfig() {
+        val config = Config(this, "%datafolder%/config.yml")
+        ConfigManager.init(config)
     }
 }
