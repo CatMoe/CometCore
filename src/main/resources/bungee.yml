@@ -1,0 +1,3 @@
+name: Comet
+version: '${project.version}'
+main: catmoe.fallencrystal.cometcore.Comet
