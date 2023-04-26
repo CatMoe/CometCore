@@ -35,7 +35,7 @@ class ItemBuilder(material: ItemType?) {
         return this
     }
 
-    private fun lore(string: String?): ItemBuilder {
+    fun lore(string: String?): ItemBuilder {
         item.addToLore(replaceFormat(string!!))
         return this
     }

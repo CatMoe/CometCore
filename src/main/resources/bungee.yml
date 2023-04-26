@@ -1,3 +1,7 @@
 name: Comet
 version: '${project.version}'
 main: catmoe.fallencrystal.cometcore.Comet
+depends:
+  - LuckPerms
+  - Protocolize
+  - Triton

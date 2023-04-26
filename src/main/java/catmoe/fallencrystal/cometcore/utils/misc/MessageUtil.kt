@@ -10,7 +10,7 @@ import net.md_5.bungee.api.connection.ProxiedPlayer
 // from AkaneField
 
 object MessageUtil {
-    private var prefix = ""
+    private var prefix = "&bComet&fCore &7» "
     @JvmStatic
     fun actionbar(p: ProxiedPlayer?, message: String) {
         try {

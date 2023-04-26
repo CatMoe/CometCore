@@ -1,0 +1,8 @@
+mysql:
+  address: localhost
+  port: 3306
+  database: "comet"
+  user: "root"
+  password: "putYourPasswordHere"
+lobby:
+  main: "Lobby"
