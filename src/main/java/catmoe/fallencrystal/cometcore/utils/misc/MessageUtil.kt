@@ -31,7 +31,8 @@ object MessageUtil {
         }
     }
 
-    private fun rawchat(p: ProxiedPlayer?, message: String) {
+    @JvmStatic
+    fun rawchat(p: ProxiedPlayer?, message: String) {
         try {
             if (p == null) {
                 loginfo(message)
@@ -49,6 +50,7 @@ object MessageUtil {
         }
     }
 
+    @JvmStatic
     fun prefixchat(p: ProxiedPlayer?, message: String) {
         rawchat(p, prefix + message)
     }
@@ -59,7 +61,8 @@ object MessageUtil {
         rawsender(sender, prefix + message)
     }
 
-    private fun rawsender(sender: CommandSender, message: String) {
+    @JvmStatic
+    fun rawsender(sender: CommandSender, message: String) {
         if (sender !is ProxiedPlayer) {
             loginfo(message)
         } else {
@@ -88,7 +91,8 @@ object MessageUtil {
         }
     }
 
-    private fun broadcastRawChatPerms(message: String, permission: String?) {
+    @JvmStatic
+    fun broadcastRawChatPerms(message: String, permission: String?) {
         for (player in ProxyServer.getInstance().players) {
             if (player.hasPermission(permission)) {
                 rawchat(player, message)
@@ -96,11 +100,13 @@ object MessageUtil {
         }
     }
 
+    @JvmStatic
     fun broadcastRawChat(message: String) {
         broadcastRawChatPerms(message, "")
     }
 
-    private fun broadcastActionbarPerms(message: String, permission: String?) {
+    @JvmStatic
+    fun broadcastActionbarPerms(message: String, permission: String?) {
         for (player in ProxyServer.getInstance().players) {
             if (player.hasPermission(permission)) {
                 actionbar(player, message)
@@ -108,19 +114,23 @@ object MessageUtil {
         }
     }
 
+    @JvmStatic
     fun broadcastActionbar(message: String) {
         broadcastActionbarPerms(message, "")
     }
 
-    private fun broadcastPrefixChatPerms(message: String, permission: String?) {
+    @JvmStatic
+    fun broadcastPrefixChatPerms(message: String, permission: String?) {
         broadcastRawChatPerms(prefix + message, permission)
     }
 
+    @JvmStatic
     fun broadcastPrefixChat(message: String) {
         broadcastPrefixChatPerms(message, "")
     }
 
-    private fun broadcastTitlePerms(
+    @JvmStatic
+    fun broadcastTitlePerms(
         title: String, subtitle: String, fadeIn: Int, stay: Int, fadeOut: Int,
         permission: String?
     ) {
@@ -131,6 +141,7 @@ object MessageUtil {
         }
     }
 
+    @JvmStatic
     fun broadcastTitle(title: String, subtitle: String, fadeIn: Int, stay: Int, fadeOut: Int) {
         broadcastTitlePerms(title, subtitle, fadeIn, stay, fadeOut, "")
     }
@@ -140,15 +151,18 @@ object MessageUtil {
         ProxyServer.getInstance().logger.info(ca(prefix + message))
     }
 
+    @JvmStatic
     fun logwarn(message: String) {
         ProxyServer.getInstance().logger.warning(ca(prefix + message))
     }
 
-    private fun logerror(message: String) {
+    @JvmStatic
+    fun logerror(message: String) {
         ProxyServer.getInstance().logger.severe(ca(prefix + message))
     }
 
-    private fun ca(text: String?): String {
+    @JvmStatic
+    fun ca(text: String?): String {
         return ChatColor.translateAlternateColorCodes('&', text)
     }
 }

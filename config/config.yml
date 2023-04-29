@@ -6,3 +6,4 @@ mysql:
   password: "putYourPasswordHere"
 lobby:
   main: "Lobby"
+  main-permission: "comet.lobby"
