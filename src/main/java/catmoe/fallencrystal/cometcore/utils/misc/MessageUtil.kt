@@ -5,6 +5,7 @@ import net.md_5.bungee.api.ChatMessageType
 import net.md_5.bungee.api.CommandSender
 import net.md_5.bungee.api.ProxyServer
 import net.md_5.bungee.api.chat.TextComponent
+import net.md_5.bungee.api.config.ServerInfo
 import net.md_5.bungee.api.connection.ProxiedPlayer
 
 // from AkaneField
@@ -34,10 +35,7 @@ object MessageUtil {
     @JvmStatic
     fun rawchat(p: ProxiedPlayer?, message: String) {
         try {
-            if (p == null) {
-                loginfo(message)
-                return
-            }
+            if (p == null) return
             p.sendMessage(
                 ChatMessageType.CHAT, TextComponent(ca(message))
             )
@@ -48,6 +46,12 @@ object MessageUtil {
             logerror("Target: $p")
             throw RuntimeException("Cannot handle chat.")
         }
+    }
+
+    @JvmStatic
+    fun rawChatNoColor(p: ProxiedPlayer?, message: String) {
+      if (p == null) return
+      p.sendMessage(ChatMessageType.CHAT, TextComponent(message))
     }
 
     @JvmStatic
@@ -144,6 +148,22 @@ object MessageUtil {
     @JvmStatic
     fun broadcastTitle(title: String, subtitle: String, fadeIn: Int, stay: Int, fadeOut: Int) {
         broadcastTitlePerms(title, subtitle, fadeIn, stay, fadeOut, "")
+    }
+
+    @JvmStatic
+    fun broadcastServerChat(server: ServerInfo, message: String) {
+        val players = server.players
+        for (player in players) {
+            rawchat(player, message)
+        }
+    }
+
+    @JvmStatic
+    fun broadcastServerActionbar(server: ServerInfo, message: String) {
+        val players = server.players
+        for (player in players) {
+            actionbar(player, message)
+        }
     }
 
     @JvmStatic

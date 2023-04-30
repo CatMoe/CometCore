@@ -2,10 +2,9 @@ package catmoe.fallencrystal.cometcore.utils.display
 
 import com.github.benmanes.caffeine.cache.Caffeine
 import net.luckperms.api.LuckPermsProvider
-import net.md_5.bungee.api.ProxyServer
+import net.md_5.bungee.api.connection.ProxiedPlayer
 import java.util.*
 import java.util.concurrent.TimeUnit
-import kotlin.collections.HashMap
 
 object DisplayCache {
 
@@ -47,10 +46,11 @@ object DisplayCache {
     }
 
     @Synchronized
-    fun getDisplayName(uuid: UUID): String {
+    fun getDisplayName(p: ProxiedPlayer): String {
+        val uuid = p.uniqueId
         val prefix = getPrefix(uuid)
         val suffix = getSuffix(uuid)
-        val name = ProxyServer.getInstance().getPlayer(uuid).displayName
+        val name = p.name
         return prefix + name + suffix
     }
 }

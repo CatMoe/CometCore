@@ -6,9 +6,8 @@ import net.md_5.bungee.api.config.ServerInfo
 import net.md_5.bungee.api.plugin.Plugin
 import java.net.InetSocketAddress
 import java.net.Socket
-import java.net.SocketAddress
 
-class SStatus : Plugin() {
+class ServerPing : Plugin() {
     fun isOnline(server: ServerInfo): Boolean {
         return try {
             val socket = Socket()

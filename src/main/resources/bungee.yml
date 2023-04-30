@@ -1,6 +1,8 @@
 name: Comet
 version: '${project.version}'
 main: catmoe.fallencrystal.cometcore.Comet
+author: "CatMoe"
+description: "Comet network core"
 depends:
   - LuckPerms
   - Protocolize
