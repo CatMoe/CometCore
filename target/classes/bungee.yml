@@ -1,0 +1,9 @@
+name: Comet
+version: '0.1'
+main: catmoe.fallencrystal.cometcore.Comet
+author: "CatMoe"
+description: "Comet network core"
+depends:
+  - LuckPerms
+  - Protocolize
+  - Triton

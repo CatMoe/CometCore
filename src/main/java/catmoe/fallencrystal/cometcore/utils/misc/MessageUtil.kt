@@ -34,18 +34,9 @@ object MessageUtil {
 
     @JvmStatic
     fun rawchat(p: ProxiedPlayer?, message: String) {
-        try {
-            if (p == null) return
-            p.sendMessage(
-                ChatMessageType.CHAT, TextComponent(ca(message))
-            )
-        } catch (e: Exception) {
-            logerror("MessageSendUtil occurred exception")
-            logerror("Type: Chat")
-            logerror("Message: $message")
-            logerror("Target: $p")
-            throw RuntimeException("Cannot handle chat.")
-        }
+        if (p == null) return
+        p.sendMessage(
+            ChatMessageType.CHAT, TextComponent(ca(message)))
     }
 
     @JvmStatic

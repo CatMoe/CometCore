@@ -9,6 +9,7 @@ import net.md_5.bungee.api.ProxyServer
 import net.md_5.bungee.api.connection.ProxiedPlayer
 import net.md_5.bungee.api.event.ChatEvent
 import net.md_5.bungee.api.plugin.Plugin
+import net.md_5.bungee.event.EventHandler
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -20,7 +21,9 @@ class LobbyChat(private val plugin: Plugin) {
 
     private val spamLimitCache = Caffeine.newBuilder().expireAfterWrite(limitTime.toLong(), TimeUnit.SECONDS).build<UUID, Int>()
 
+    @EventHandler(priority = 0)
     fun lobbyChat(event: ChatEvent) {
+        if (event.isCancelled) return
         val player = proxy.getPlayer(event.sender.toString())
         val isCommand = event.isCommand
         val message = event.message

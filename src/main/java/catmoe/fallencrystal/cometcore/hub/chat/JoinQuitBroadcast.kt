@@ -38,7 +38,7 @@ class JoinQuitBroadcast {
         }
     }
 
-    fun broadcastServerAndPermission(server: ServerInfo, permission: String, message: String) {
+    private fun broadcastServerAndPermission(server: ServerInfo, permission: String, message: String) {
         val players = server.players
         for (player in players) { if (player.hasPermission(permission)) { MessageUtil.rawchat(player, message) } }
     }
